@@ -1,0 +1,25 @@
+# Mac file to ignore
+.DS_Store
+
+# Compressed files from other work
+*.zip
+*.gz
+
+# LaTeX  auxiliary files and output
+*.log
+*.out
+*.aux
+# *.pdf
+*.fdb_latexmk
+*.fls
+
+# Java files
+*.class
+*.jar
+
+# VS Code file
+.vscode/
+
+# Erlang output files
+*.beam
+*.dump
