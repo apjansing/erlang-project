@@ -1,0 +1,236 @@
+% template for papers with a title page
+% see dgstpp.sty for title page info
+% format: latex
+% last changed: 1 Apr 2015
+
+\documentclass[11 pt]{IEEEtran}
+
+% standard math packages
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{scrextend}
+\usepackage{tikz}
+\usetikzlibrary{arrows, shapes, plothandlers}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{ragged2e}
+
+\usepackage{hyperref}
+\usepackage{url}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=bash,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breakatwhitespace=true,
+  tabsize=3,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+
+
+% Phil Parker's DGS packages, some modified
+\usepackage{remexpp,pprroof,dgstpp}
+
+% other packages
+\usepackage{setspace}
+%\usepackage{hyperref,color}
+
+% "fancy" font
+\usepackage{fourier}
+\usepackage[T1]{fontenc}
+   
+% make reference header the right font size
+\renewcommand\refname{\Large References}
+   
+% theorems, remarks, etc using Phil Parker's "remexpp.sty"
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newremark{definition}[theorem]{Definition}
+\newremark{example}[theorem]{Example}
+\newremark{remark}[theorem]{Remark} 
+
+% make rsfs, TeX \cal, and Euler script *all* available
+\usepackage{mathrsfs}
+\let\rscr=\mathscr
+\let\mathscr=\relax
+\let\mcal=\mathcal
+\usepackage{eucal}
+\let\escr=\mathcal
+\let\mathcal=\relax
+
+% commutative diagrams with XY-pic
+\usepackage[all]{xy}
+\SelectTips{cm}{}
+
+\arraycolsep .2em
+   
+% new commands
+\renewcommand{\a}{\alpha}
+\newcommand{\Aut}[1]{\textrm{Aut}(#1)}
+\newcommand{\B}{\rscr{B}}
+\newcommand{\br}[2]{\left[#1,#2\right]}
+\newcommand{\bre}{\br{\ }{\,}}
+\newcommand{\ddg}{\ddot{\g}}
+\newcommand{\dg}{\dot{\g}}
+\newcommand{\DGS}{D{\kern-.375em}G{\kern-.2em}S}
+\newcommand{\ds}{\oplus}
+\newcommand{\eB}{\escr{B}}
+\newcommand{\eH}{\escr{H}}
+\newcommand{\eI}{\escr{I}}
+\newcommand{\eV}{\escr{V}}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\newcommand{\h}{\lal{h}}
+\renewcommand{\H}{\rscr{H}}
+\newcommand{\hp}{\h_{2p + 1}}
+\newcommand{\iso}{\cong}
+\newcommand{\lag}{\mathfrak{g}}
+\newcommand{\lal}[1]{\mathfrak{#1}}
+\newcommand{\n}{\lal{n}}
+\newcommand{\pplus}{+\mspace{-10 mu}+}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rS}{\rscr{S}}
+\renewcommand{\span}[1]{[\mspace{-3.25 mu}[ #1 ]\mspace{-3.25 mu}]}
+\newcommand{\surj}{\rightarrow\kern-.82em\rightarrow}
+\newcommand{\tQ}{\widetilde{Q}}
+\renewcommand{\v}{\lal{v}}
+\newcommand{\V}{\rscr{V}}
+\newcommand{\z}{\lal{z}}
+%%Alex's defined commands%%
+\newcommand{\adx}{ad$_x$ }
+\newcommand{\ady}{ad$_y$ }
+\newcommand{\adz}{ad$_z$ }
+\newcommand{\fj}{\mathfrak{j}}
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fz}{\mathfrak{z}}
+\newcommand{\fv}{\mathfrak{v}}
+\newcommand{\fh}{\mathfrak{h}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\FF}{\mathbb{F}}
+
+
+\makeatletter
+\newcommand{\ad}[1]{\mathop{\operator@font ad}\nolimits_{#1}}
+\makeatother
+
+% show labels in margin (must be last package added)
+\usepackage{showlabels}
+
+% input information for the title page here:
+\preprint{}
+\title{Programming Languages: Erlang}
+\author{Alexander Jansing}
+\address{
+   Computer Science Department\\
+   State University of New York,\\
+   Polytechnic Institute\\
+   Utica, NY 13502\\
+   USA\\
+   \textsf{jansina@sunyit.edu}
+}
+\date{\today}
+\abstract{
+
+}
+\msc{}{}
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+\subsection{History of Erlang}
+\subsection{Erlang Use Cases}
+ 
+
+\section{Research}
+ 
+\section{Using Apex}
+
+\section{Stretch Goals and Future Work}
+
+
+\newpage
+\section{Appendix}
+ 
+\subsection{Code snippets}
+
+%\begin{lstlisting}
+%
+%\end{lstlisting}
+
+
+ \subsection{Source locations}
+ 
+ \subsubsection{Apex Documentations}
+
+  
+\begin{thebibliography}{99}
+\bibitem{erlang}
+Erlang.org. (2019). Erlang Programming Language. [online] Available at: \url{http://www.erlang.org/} [Accessed 19 Mar. 2019].
+
+\bibitem{0xAX}
+GitHub. (2019). 0xAX/erlang-bookmarks. [online] Available at: \url{https://github.com/0xAX/erlang-bookmarks} [Accessed 19 Mar. 2019].
+
+\bibitem{Carrone}
+Carrone, F. (2019). Become an Erlang Cowboy and tame the Wild Wild West -- Part I. [online] This is not a Monad tutorial. Available at: \url{https://notamonadtutorial.com/become-an-erlang-cowboy-and-tame-the-wild-wild-web-part-i-37f8dd1df160} [Accessed 19 Mar. 2019].
+
+\bibitem{Hebert}
+Hebert, F. (2019). On Erlang's Syntax. [online] Ferd.ca. Available at: \url{https://ferd.ca/on-erlang-s-syntax.html} [Accessed 19 Mar. 2019].
+
+\bibitem{Miller}
+Miller, E. (2019). Why I Program in Erlang – Evan Miller. [online] Evanmiller.org. Available at: https://www.evanmiller.org/why-i-program-in-erlang.html [Accessed 19 Mar. 2019].
+
+\bibitem{Notepad}
+Quick Notepad Tutorial (2019). Erlang Hello World Example How To Write Compile and Execute Erlang Program on Linux. [online] YouTube. Available at: \url{https://www.youtube.com/watch?v=zGG9eI13UHA} [Accessed 20 Mar. 2019].
+
+\end{thebibliography}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
