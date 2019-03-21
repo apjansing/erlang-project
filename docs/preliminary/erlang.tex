@@ -156,9 +156,7 @@
 }
 \date{\today}
 \abstract{
-Erlang is a functional programming language that is known for it use in the telecom industry and the popular software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}. Erlang is sometime referred to as Erlang/OTP or just OTP (Open Telecom Platform). Joe Armstrong Erlang's original author, analogized the language to Java's ``write once, run anywhere,' to ``'write once, run forever.''
-
-%Apache Apex is Hadoop YARN-native framework for building distributed applications and applies native streaming to the data processing pipeline \cite{WEISE}. The Apex project was mainly been driven by the company DataTorrent. DataTorrent shut its doors back in May of 2018\cite{WIKI}\cite{DATANAMI}.
+Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecom industry and the popular software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}. Erlang is sometime referred to as Erlang/OTP or just OTP (Open Telecom Platform).
 }
 \msc{}{}
 
@@ -168,18 +166,50 @@ Erlang is a functional programming language that is known for it use in the tele
 
 \section{Introduction}
 \subsection{History of Erlang}
-\subsection{Erlang Use Cases}
- 
+Erlang was originally developed within Ericsson by Joe Armstrong, Robert Virding, and Mike Williams in 1986 and released to open source in 1998. It is still maintained by the OTP product unit at Ericsson \cite{wiki}. 
+
+Erlang was designed with the purpose of improving the development telephony applications. As recently as 2014, Erlang was used in the support nodes of 3G and LTE mobile network nodes\cite{wiki}\cite{inside-erlang}.
+
+\subsection{Layout of Paper}
+In this report, I will go over what I have done:
+\begin{enumerate}
+\item to research the language,
+\item in the Erlang language,
+\item and what I think I can do with the language this semester.
+\end{enumerate}
+
+If any definitions are missing, you may find it in the Appendix Definitions subsection.
+
+\section{Erlang Use Cases}
+Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecommunications industry and the popular software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}. Erlang is sometime referred to as Erlang/OTP or just OTP (Open Telecom Platform).
+
+Erlang has several characteristics that make it very attractive to those who need their programs to stay alive, like the telecommunications industry. It supports \emph{distribution}, \emph{hot swapping}, and \emph{soft real-time computing}.
 
 \section{Research}
+The primary way I learn new languages is to find a variety of tutorials and many quick searches to figure out what I need to do when tasks come up. In addition to on-demand searches, use cases are of great importance to the research and decision whether-or-not to use a language for a given task. 
+
+In the case of this project I have also expanded my research to blogs of developers who use the languages. The blog by Even Miller has even given me possible projects to work on throughout the semester; 
+\begin{enumerate}
+\item a CSV parser,
+\item a template compiler,
+\item a object-relational mapper,
+\item  a rich-text parser,
+\item  or an image resizer.
+\end{enumerate}
  
-\section{Using Apex}
+\section{Using Erlang}
+TODO (Hello World).
 
-\section{Stretch Goals and Future Work}
-
+\section{Goals for the Course Project}
+TODO (Mention some of the items in the list from the Research section).
 
 \newpage
 \section{Appendix}
+\subsection{Definitions}
+\begin{enumerate}
+\item  Hot Swapping - code can be updated without shutting down a system \cite{wiki}.
+\item Soft Real-time Computing - computation where the goal is to meet subsets of deadlines in order to optimize application-specific criteria (defined by developer). \cite{soft-rt}.
+\end{enumerate}
  
 \subsection{Code snippets}
 
@@ -221,6 +251,12 @@ Wikiwand. (2019). Chef (software) | Wikiwand. [online] Available at: \url{https:
 
 \bibitem{run-forever}
 YouTube. (2019). Rackspace takes a look at the ERLANG programming language for distributed computing. [online] Available at: \url{https://www.youtube.com/watch?v=u41GEwIq2mE&t=3m59s} [Accessed 20 Mar. 2019].
+
+\bibitem{soft-rt}
+“Real-time computing,” Wikiwand. [Online]. Available: \url{https://www.wikiwand.com/en/Real-time_computing#/Soft}. [Accessed: 21-Mar-2019].
+
+\bibitem{inside-erlang}
+“Inside Erlang – creator Joe Armstrong tells his story,” Ericsson.com, 04-Dec-2014. [Online]. Available: \url{https://www.ericsson.com/en/news/2014/12/inside-erlang--creator-joe-armstrong-tells-his-story}. [Accessed: 21-Mar-2019].
 
 \end{thebibliography}
 \end{document}
