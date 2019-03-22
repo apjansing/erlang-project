@@ -1,6 +1,6 @@
 -module(basic_math).
 -import(lists,[append/2]). 
--export([start/0]).
+-export([start/0, start/1]).
 
 start() ->
     W = 0,
@@ -13,6 +13,15 @@ start() ->
     N3 = append(N2, [subtraction(X, Y)]),
     N4 = append(N3, [pow(Y, Z)]),
     N5 = append(N4, [log(Y, Z)]),
+    io:fwrite("~w~n", [N5]).
+
+start(X) ->
+    N = [multiplication(X, X)],
+    N1 = append(N, [divison(X+X+X, X)]),
+    N2 = append(N1, [addition(X, X)]),
+    N3 = append(N2, [subtraction(X, X)]),
+    N4 = append(N3, [pow(X, X)]),
+    N5 = append(N4, [log(X, X)]),
     io:fwrite("~w~n", [N5]).
 
 
@@ -34,4 +43,5 @@ pow(A, Exp) ->
 log(A, Base) ->
     math:log(A)/math:log(Base).
 
-
+log(A) ->
+    math:log(A).
