@@ -29,7 +29,7 @@
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
 \lstset{frame=tb,
-  language=bash,
+  language=erlang,
   aboveskip=3mm,
   belowskip=3mm,
   showstringspaces=false,
@@ -197,11 +197,16 @@ In the case of this project I have also expanded my research to blogs of develop
 \item  or an image resizer.
 \end{enumerate}
  
-\section{Using Erlang}
-TODO (Hello World).
+\section{Conclusion}
+\subsection{Using Erlang}
+So far, I'm not sure what my opinion of Erlang is as a language. With some professional experience with programs like RabbitMQ and Chef, I know that Erlang can be a powerful language, but it seems that there will be quite a learning curve on how to use the language.
 
-\section{Goals for the Course Project}
-TODO (Mention some of the items in the list from the Research section).
+I have installed the Erlang, worked through the typical Hello World program, and wrote some basic math operations (see Appendix). In the process of the basic math operations, I discovered how to use some of the built in modules, more on how the \textsc{io:fwrite} function works, and how the overloading of functions works.
+
+I have no yet been able to find a streamlined way to install dependencies. I have found information on a program called \emph{Rebar} but I have yet to understand how to use it with. Rebar looks to require some foreknowledge of which dependencies are out there, unlike other dependency management tools for other languages like \emph{Maven} (Java) and \emph{pip} (Python).
+
+\subsection{Goals for the Course Project}
+For the course project, I hope to write a program that shows off Erlang's ability to have programs that run forever (\emph{i.e.} a web-service that performs some simple action). 
 
 \newpage
 \section{Appendix}
@@ -213,10 +218,60 @@ TODO (Mention some of the items in the list from the Research section).
  
 \subsection{Code snippets}
 
-%\begin{lstlisting}
-%
-%\end{lstlisting}
+\begin{lstlisting}
+-module(hello_world).
+-export([start/0]).
 
+start() ->
+    io:fwrite("hello world~n").
+\end{lstlisting}
+
+\begin{lstlisting}
+-module(basic_math).
+-import(lists,[append/2]). 
+-export([start/0, start/1]).
+
+start() ->
+    W = 0,
+    X = 1,
+    Y = 2,
+    Z = 3,
+    N = [multiplication(W, X)],
+    N1 = append(N, [divison(Z+Z+Y, Y)]),
+    N2 = append(N1, [addition(X, Y)]),
+    N3 = append(N2, [subtraction(X, Y)]),
+    N4 = append(N3, [pow(Y, Z)]),
+    N5 = append(N4, [log(Y, Z)]),
+    io:fwrite("~w~n", [N5]).
+
+start(X) ->
+    N = [multiplication(X, X)],
+    N1 = append(N, [divison(X+X+X, X)]),
+    N2 = append(N1, [addition(X, X)]),
+    N3 = append(N2, [subtraction(X, X)]),
+    N4 = append(N3, [pow(X, X)]),
+    N5 = append(N4, [log(X, X)]),
+    io:fwrite("~w~n", [N5]).
+
+
+multiplication(A, B) -> 
+    A * B.
+
+divison(A, B) -> 
+    A / B.
+
+addition(A, B) -> 
+    A + B.
+
+subtraction(A, B) -> 
+    A + B.
+
+pow(A, Exp) ->
+    math:pow(A, Exp).
+
+log(A, Base) ->
+    math:log(A)/math:log(Base).
+\end{lstlisting}
 
  \subsection{Source locations}
 
