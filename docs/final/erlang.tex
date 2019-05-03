@@ -1,0 +1,339 @@
+% template for papers with a title page
+% see dgstpp.sty for title page info
+% format: latex
+% last changed: 1 Apr 2015
+
+\documentclass[11 pt]{IEEEtran}
+
+% standard math packages
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{scrextend}
+\usepackage{tikz}
+\usetikzlibrary{arrows, shapes, plothandlers}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{ragged2e}
+
+\usepackage{hyperref}
+\usepackage{url}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=erlang,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breakatwhitespace=true,
+  tabsize=3,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+
+
+% Phil Parker's DGS packages, some modified
+\usepackage{remexpp,pprroof,dgstpp}
+
+% other packages
+\usepackage{setspace}
+%\usepackage{hyperref,color}
+
+% "fancy" font
+\usepackage{fourier}
+\usepackage[T1]{fontenc}
+   
+% make reference header the right font size
+\renewcommand\refname{\Large References}
+   
+% theorems, remarks, etc using Phil Parker's "remexpp.sty"
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newremark{definition}[theorem]{Definition}
+\newremark{example}[theorem]{Example}
+\newremark{remark}[theorem]{Remark} 
+
+% make rsfs, TeX \cal, and Euler script *all* available
+\usepackage{mathrsfs}
+\let\rscr=\mathscr
+\let\mathscr=\relax
+\let\mcal=\mathcal
+\usepackage{eucal}
+\let\escr=\mathcal
+\let\mathcal=\relax
+
+% commutative diagrams with XY-pic
+\usepackage[all]{xy}
+\SelectTips{cm}{}
+
+\arraycolsep .2em
+   
+% new commands
+\renewcommand{\a}{\alpha}
+\newcommand{\Aut}[1]{\textrm{Aut}(#1)}
+\newcommand{\B}{\rscr{B}}
+\newcommand{\br}[2]{\left[#1,#2\right]}
+\newcommand{\bre}{\br{\ }{\,}}
+\newcommand{\ddg}{\ddot{\g}}
+\newcommand{\dg}{\dot{\g}}
+\newcommand{\DGS}{D{\kern-.375em}G{\kern-.2em}S}
+\newcommand{\ds}{\oplus}
+\newcommand{\eB}{\escr{B}}
+\newcommand{\eH}{\escr{H}}
+\newcommand{\eI}{\escr{I}}
+\newcommand{\eV}{\escr{V}}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\newcommand{\h}{\lal{h}}
+\renewcommand{\H}{\rscr{H}}
+\newcommand{\hp}{\h_{2p + 1}}
+\newcommand{\iso}{\cong}
+\newcommand{\lag}{\mathfrak{g}}
+\newcommand{\lal}[1]{\mathfrak{#1}}
+\newcommand{\n}{\lal{n}}
+\newcommand{\pplus}{+\mspace{-10 mu}+}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rS}{\rscr{S}}
+\renewcommand{\span}[1]{[\mspace{-3.25 mu}[ #1 ]\mspace{-3.25 mu}]}
+\newcommand{\surj}{\rightarrow\kern-.82em\rightarrow}
+\newcommand{\tQ}{\widetilde{Q}}
+\renewcommand{\v}{\lal{v}}
+\newcommand{\V}{\rscr{V}}
+\newcommand{\z}{\lal{z}}
+%%Alex's defined commands%%
+\newcommand{\adx}{ad$_x$ }
+\newcommand{\ady}{ad$_y$ }
+\newcommand{\adz}{ad$_z$ }
+\newcommand{\fj}{\mathfrak{j}}
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fz}{\mathfrak{z}}
+\newcommand{\fv}{\mathfrak{v}}
+\newcommand{\fh}{\mathfrak{h}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\FF}{\mathbb{F}}
+
+
+\makeatletter
+\newcommand{\ad}[1]{\mathop{\operator@font ad}\nolimits_{#1}}
+\makeatother
+
+% show labels in margin (must be last package added)
+\usepackage{showlabels}
+
+% input information for the title page here:
+\preprint{}
+\title{Programming Languages: Erlang}
+\author{Alexander Jansing}
+\address{
+   Computer Science Department\\
+   State University of New York,\\
+   Polytechnic Institute\\
+   Utica, NY 13502\\
+   USA\\
+   \textsf{jansina@sunypoly.edu}
+}
+\date{\today}
+\abstract{
+Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecom industry and the popular software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}. Erlang is sometime referred to as Erlang/OTP or just OTP (Open Telecom Platform).
+}
+\msc{}{}
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+\subsection{History of Erlang}
+Erlang was originally developed within Ericsson by Joe Armstrong, Robert Virding, and Mike Williams in 1986 and released to open source in 1998. It is still maintained by the OTP product unit at Ericsson \cite{wiki}. 
+
+Erlang was designed with the purpose of improving the development telephony applications. As recently as 2014, Erlang was used in the support nodes of 3G and LTE mobile network nodes\cite{wiki}\cite{inside-erlang}.
+
+\subsection{Layout of Paper}
+In this report, I will go over what I have done:
+\begin{enumerate}
+\item to research the language,
+\item in the Erlang language,
+\item and what I think I can do with the language this semester.
+\end{enumerate}
+
+If any definitions are missing, you may find it in the Appendix Definitions subsection.
+
+\section{Erlang Use Cases}
+Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecommunications industry and the popular software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}. Erlang is sometime referred to as Erlang/OTP or just OTP (Open Telecom Platform).
+
+Erlang has several characteristics that make it very attractive to those who need their programs to stay alive, like the telecommunications industry. It supports \emph{distribution}, \emph{hot swapping}, and \emph{soft real-time computing}.
+
+\section{Research}
+The primary way I learn new languages is to find a variety of tutorials and many quick searches to figure out what I need to do when tasks come up. In addition to on-demand searches, use cases are of great importance to the research and decision whether-or-not to use a language for a given task. 
+
+In the case of this project I have also expanded my research to blogs of developers who use the languages. The blog by Even Miller has even given me possible projects to work on throughout the semester; 
+\begin{enumerate}
+\item a CSV parser,
+\item a template compiler,
+\item a object-relational mapper,
+\item  a rich-text parser,
+\item  or an image resizer.
+\end{enumerate}
+ 
+\section{Conclusion}
+\subsection{Using Erlang}
+So far, I'm not sure what my opinion of Erlang is as a language. With some professional experience with programs like RabbitMQ and Chef, I know that Erlang can be a powerful language, but it seems that there will be quite a learning curve on how to use the language.
+
+I have installed the Erlang, worked through the typical Hello World program, and wrote some basic math operations (see Appendix). In the process of the basic math operations, I discovered how to use some of the built in modules, more on how the \textsc{io:fwrite} function works, and how the overloading of functions works.
+
+I have no yet been able to find a streamlined way to install dependencies. I have found information on a program called \emph{Rebar} but I have yet to understand how to use it with. Rebar looks to require some foreknowledge of which dependencies are out there, unlike other dependency management tools for other languages like \emph{Maven} (Java) and \emph{pip} (Python).
+
+\subsection{Goals for the Course Project}
+For the course project, I hope to write a program that shows off Erlang's ability to have programs that run forever (\emph{i.e.} a web-service that performs some simple action). 
+
+\newpage
+\section{Appendix}
+\subsection{Definitions}
+\begin{enumerate}
+\item  Hot Swapping - code can be updated without shutting down a system \cite{wiki}.
+\item Soft Real-time Computing - computation where the goal is to meet subsets of deadlines in order to optimize application-specific criteria (defined by developer). \cite{soft-rt}.
+\end{enumerate}
+ 
+\subsection{Code snippets}
+
+\begin{lstlisting}
+-module(hello_world).
+-export([start/0]).
+
+start() ->
+    io:fwrite("hello world~n").
+\end{lstlisting}
+
+\begin{lstlisting}
+-module(basic_math).
+-import(lists,[append/2]). 
+-export([start/0, start/1]).
+
+start() ->
+    W = 0,
+    X = 1,
+    Y = 2,
+    Z = 3,
+    N = [multiplication(W, X)],
+    N1 = append(N, [divison(Z+Z+Y, Y)]),
+    N2 = append(N1, [addition(X, Y)]),
+    N3 = append(N2, [subtraction(X, Y)]),
+    N4 = append(N3, [pow(Y, Z)]),
+    N5 = append(N4, [log(Y, Z)]),
+    io:fwrite("~w~n", [N5]).
+
+start(X) ->
+    N = [multiplication(X, X)],
+    N1 = append(N, [divison(X+X+X, X)]),
+    N2 = append(N1, [addition(X, X)]),
+    N3 = append(N2, [subtraction(X, X)]),
+    N4 = append(N3, [pow(X, X)]),
+    N5 = append(N4, [log(X, X)]),
+    io:fwrite("~w~n", [N5]).
+
+
+multiplication(A, B) -> 
+    A * B.
+
+divison(A, B) -> 
+    A / B.
+
+addition(A, B) -> 
+    A + B.
+
+subtraction(A, B) -> 
+    A + B.
+
+pow(A, Exp) ->
+    math:pow(A, Exp).
+
+log(A, Base) ->
+    math:log(A)/math:log(Base).
+\end{lstlisting}
+
+ \subsection{Source locations}
+
+  
+\begin{thebibliography}{99}
+\bibitem{erlang}
+Erlang.org. (2019). Erlang Programming Language. [online] Available at: \url{http://www.erlang.org/} [Accessed 19 Mar. 2019].
+
+\bibitem{0xAX}
+GitHub. (2019). 0xAX/erlang-bookmarks. [online] Available at: \url{https://github.com/0xAX/erlang-bookmarks} [Accessed 19 Mar. 2019].
+
+\bibitem{Carrone}
+Carrone, F. (2019). Become an Erlang Cowboy and tame the Wild Wild West -- Part I. [online] This is not a Monad tutorial. Available at: \url{https://notamonadtutorial.com/become-an-erlang-cowboy-and-tame-the-wild-wild-web-part-i-37f8dd1df160} [Accessed 19 Mar. 2019].
+
+\bibitem{Hebert}
+Hebert, F. (2019). On Erlang's Syntax. [online] Ferd.ca. Available at: \url{https://ferd.ca/on-erlang-s-syntax.html} [Accessed 19 Mar. 2019].
+
+\bibitem{Miller}
+Miller, E. (2019). Why I Program in Erlang – Evan Miller. [online] Evanmiller.org. Available at: https://www.evanmiller.org/why-i-program-in-erlang.html [Accessed 19 Mar. 2019].
+
+\bibitem{Notepad}
+Quick Notepad Tutorial (2019). Erlang Hello World Example How To Write Compile and Execute Erlang Program on Linux. [online] YouTube. Available at: \url{https://www.youtube.com/watch?v=zGG9eI13UHA} [Accessed 20 Mar. 2019].
+
+\bibitem{wiki}
+Wikiwand. (2019). Erlang (programming language) | Wikiwand. [online] Available at: \url{https://www.wikiwand.com/en/Erlang_(programming_language)} [Accessed 20 Mar. 2019].
+
+\bibitem{ribbitmq-wiki}
+Wikiwand. (2019). RabbitMQ | Wikiwand. [online] Available at: \url{https://www.wikiwand.com/en/RabbitMQ} [Accessed 20 Mar. 2019].
+
+\bibitem{chef-wiki}
+Wikiwand. (2019). Chef (software) | Wikiwand. [online] Available at: \url{https://www.wikiwand.com/en/Chef_(software)} [Accessed 20 Mar. 2019].
+
+\bibitem{run-forever}
+YouTube. (2019). Rackspace takes a look at the ERLANG programming language for distributed computing. [online] Available at: \url{https://www.youtube.com/watch?v=u41GEwIq2mE&t=3m59s} [Accessed 20 Mar. 2019].
+
+\bibitem{soft-rt}
+“Real-time computing,” Wikiwand. [Online]. Available: \url{https://www.wikiwand.com/en/Real-time_computing#/Soft}. [Accessed: 21-Mar-2019].
+
+\bibitem{inside-erlang}
+“Inside Erlang – creator Joe Armstrong tells his story,” Ericsson.com, 04-Dec-2014. [Online]. Available: \url{https://www.ericsson.com/en/news/2014/12/inside-erlang--creator-joe-armstrong-tells-his-story}. [Accessed: 21-Mar-2019].
+
+\end{thebibliography}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
