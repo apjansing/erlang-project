@@ -1,6 +1,6 @@
 -module(basic_math).
 -import(lists,[append/2]). 
--export([start/0, start/1]).
+-export([start/0, start/1, multiplication/2, divison/2, addition/2, subtraction/2, pow/2, log/2, log/1]).
 
 start() ->
     W = 0,
