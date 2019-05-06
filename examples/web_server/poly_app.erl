@@ -76,6 +76,3 @@ service(SessionID, _Env, _Input) -> mod_esi:deliver(SessionID, [
          </script>   
       </body>
    </html>" ]).
-
-% http://erlang.org/doc/man/mod_esi.html
-% mongodb(SessionID, _Env, _Input) -> mod_esi:deliver(SessionID, []).
