@@ -45,9 +45,7 @@
   tabsize=2,
   breaklines=true,
   literate={<div>}{<div>}{1\discretionary{}{}{}}{</div>}{</div>}{1\discretionary{}{}{}}
-  {N}{N}{1\discretionary{}{}{}}
-  {removeAttribute}{removeAttribute}{1\discretionary{}{}{}},
-  {include}{include}{1\discretionary{}{}{}},
+  {N}{N}{1\discretionary{}{}{}}{removeAttribute}{removeAttribute}{1\discretionary{}{}{}}{include}{include}{1\discretionary{}{}{}},
   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
 }
 
@@ -161,7 +159,7 @@
 }
 \date{\today}
 \abstract{
-Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecom industry and the popular software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}. Erlang is sometime referred to as Erlang/OTP or just OTP (Open Telecom Platform).
+Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecom industry and message queuing and devops software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}, respectively. Erlang is sometime referred to as Erlang/OTP or just OTP (Open Telecom Platform).
 }
 \msc{}{}
 
@@ -193,24 +191,25 @@ Erlang can be used for variety of tasks, but has never gained much popularity ou
 The tutorials that I found most useful were on Tutorialspoint\cite{tutorialspoint} and O'Reilly\cite{kessin}. Even though these tutorials were the most useful, they were still some of the drier tutorials I have followed. I will cover more on these tutorials in Subsection \ref{tutorials}.
 
 \section{Erlang Use Cases}\label{usecase}
-Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecommunications industry and the popular software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}. 
+Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecommunications industry and message queuing and devops software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}, respectively. 
 
 Erlang has several characteristics that make it very attractive to those who need their programs to stay alive, like the telecommunications industry. It supports \emph{distribution}, \emph{hot swapping}, and \emph{soft real-time computing}.
 
 \section{Project}\label{project}
-\subsection{Tutorials}\label{tutorials}
-\subsection{My Take}\label{mytake}
+\subsection{Learning}
+\subsubsection{Tutorials}\label{tutorials}
+Earlier I mentioned that that two tutorials that I found most useful were on Tutorialspoint\cite{tutorialspoint} and O'Reilly\cite{kessin}. The O'Reilly tutorial, authored by Zachary Kessin, does a great job explaining how to interact with maps (\emph{i.e.} JSON) and specified schemas that descripe the expected input to a program. This tutorial was the first attempt to create a web app with erlang that I could find, but it would have required diving deeper into learning CoffeeScript and the ExtJS framework\cite{sencha}. For the sake of staying on task, staying within the scope of this assignment, and the time bounds of the course I searched for and worked witht eh Tutorialspoint web app example.
+
+The Tutorialspoint web app tutorial was a fairly straightforward example of how to create a web server and delivier some code over a port. The tutorial can run as provided, but it helps to have a better understanding of \emph{httpd}
+
+\subsubsection{Using Erlang}
+Erlang can be a powerful language, but it seems that there will be quite a learning curve on how to use the language. I have installed the Erlang, written a couple small programs (see Appendix \ref{code-snippets}), but to perform more complex tasks you would need to use \emph{rebar3}. Rebar3 is an application and dependency management program for erlang. This would be analogous with other dependency management tools for other languages like \emph{Maven} (Java) and \emph{pip} (Python).
+
+
+\subsection{My Erlang Programs}\label{mytake}
  
 \section{Conclusion}
-\subsection{Using Erlang}
-So far, I'm not sure what my opinion of Erlang is as a language. With some professional experience with programs like RabbitMQ and Chef, I know that Erlang can be a powerful language, but it seems that there will be quite a learning curve on how to use the language.
 
-I have installed the Erlang, worked through the typical Hello World program, and wrote some basic math operations (see Appendix). In the process of the basic math operations, I discovered how to use some of the built in modules, more on how the \textsc{io:fwrite} function works, and how the overloading of functions works.
-
-I have no yet been able to find a streamlined way to install dependencies. I have found information on a program called \emph{Rebar} but I have yet to understand how to use it with. Rebar looks to require some foreknowledge of which dependencies are out there, unlike other dependency management tools for other languages like \emph{Maven} (Java) and \emph{pip} (Python).
-
-\subsection{Goals for the Course Project}
-For the course project, I hope to write a program that shows off Erlang's ability to have programs that run forever (\emph{i.e.} a web-service that performs some simple action). 
 
 \newpage
 \section{Appendix}
@@ -220,7 +219,7 @@ For the course project, I hope to write a program that shows off Erlang's abilit
 \item Soft Real-time Computing - computation where the goal is to meet subsets of deadlines in order to optimize application-specific criteria (defined by developer). \cite{soft-rt}.
 \end{enumerate}
  
-\subsection{Code snippets}
+\subsection{Code snippets}\label{code-snippets}
 
     hello\_world.erl
     \lstinputlisting{../../examples/hello_world/hello_world.erl}
@@ -292,6 +291,8 @@ Erldocs.com. (2019). inets (inets) - (Erlang Documentation). [online] Available 
 \bibitem{modesi}
 Erlang.org. (2019). Erlang -- mod\_esi. [online] Available at: \url{http://erlang.org/doc/man/mod_esi.html} [Accessed 6 May 2019].
 
+\bibitem{sencha}
+Sencha.com. (2019). [online] Available at: http://sencha.com/ [Accessed 6 May 2019].
 
 \end{thebibliography}
 \end{document}
