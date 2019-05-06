@@ -1,6 +1,6 @@
 # Erlang Web Server
  
-## Running this code.
+## Running this code
 To run this code, first you need to compile the module.
 ```
 erlc poly_app.erl
