@@ -19,3 +19,9 @@ I would like to acknowledge the following for inspiring and providing me with a 
 Tutorialspoint.com, “Erlang Web Programming,” www.tutorialspoint.com. [Online]. Available: https://www.tutorialspoint.com/erlang/erlang_web_programming.htm. [Accessed: 03-May-2019].
 
 G. Smith, YouTube - Building a web app in Erlang - yes you heard me right I said Erlang not Elixir, 25-Mar-2017. [Online]. Available: https://www.youtube.com/watch?v=BO-8Hx8kPtA. [Accessed: 03-May-2019].
+
+
+Possible other sources to look at:
+ * http://erlang.org/doc/man/mod_esi.html
+ * https://erldocs.com/r15b01/inets/inets.html
+ * https://github.com/klacke/yaws
