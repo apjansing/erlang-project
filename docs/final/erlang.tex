@@ -13,6 +13,7 @@
 \usepackage{tikz}
 \usepackage{tikzscale}
 \usepackage{ragged2e}
+\usepackage[nolabel, final]{showlabels}
 
 \usepackage{hyperref}
 \usepackage{url}
@@ -30,8 +31,8 @@
 
 \lstset{frame=tb,
   language=erlang,
-  aboveskip=3mm,
-  belowskip=3mm,
+  aboveskip=1mm,
+  belowskip=1mm,
   showstringspaces=false,
   columns=flexible,
   basicstyle={\small\ttfamily},
@@ -41,8 +42,12 @@
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
   breakatwhitespace=true,
-  tabsize=3,
+  tabsize=2,
   breaklines=true,
+  literate={<div>}{<div>}{1\discretionary{}{}{}}{</div>}{</div>}{1\discretionary{}{}{}}
+  {N}{N}{1\discretionary{}{}{}}
+  {removeAttribute}{removeAttribute}{1\discretionary{}{}{}},
+  {include}{include}{1\discretionary{}{}{}},
   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
 }
 
@@ -166,29 +171,35 @@ Joe Armstrong, one of Erlang's original authors, analogized the language to Java
 
 \section{Introduction}
 \subsection{History of Erlang}
-Erlang was originally developed within Ericsson by Joe Armstrong, Robert Virding, and Mike Williams in 1986 and released to open source in 1998. It is still maintained by the OTP product unit at Ericsson \cite{wiki}. 
+Erlang was originally developed within Ericsson by Joe Armstrong, Robert Virding, and Mike Williams in 1986 and released to open source in 1998. Erlang is sometime referred to as Erlang/OTP or just OTP (Open Telecom Platform). It is still maintained by the OTP product unit at Ericsson \cite{wiki}. 
 
 Erlang was designed with the purpose of improving the development telephony applications. As recently as 2014, Erlang was used in the support nodes of 3G and LTE mobile network nodes\cite{wiki}\cite{inside-erlang}.
 
 \subsection{Layout of Paper}
-In this report, I will go over what I have done:
+This report will cover:
 \begin{enumerate}
-\item to research the language,
-\item in the Erlang language,
-\item and what I have been to do with Erlang.
+    \item the research I performed on the language,
+    \item Erlang's use cases,
+    \item and what I have been to do with Erlang.
 \end{enumerate}
 
-If any definitions are missing, you may find it in the Appendix Definitions subsection.
+If any definitions are missing, you may find it in the Appendix \ref{definitions}.
 
-\section{Erlang Use Cases}
-Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecommunications industry and the popular software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}. Erlang is sometime referred to as Erlang/OTP or just OTP (Open Telecom Platform).
+\section{Research}
+The primary way I learn new languages is to find a variety of tutorials and many quick searches to figure out what I need to do when tasks come up. In addition to on-demand searches, use cases are of great importance to the research and decision whether-or-not to use a language for a given task. Use cases will be covered more in the Section \ref{usecase}.
+
+Erlang can be used for variety of tasks, but has never gained much popularity outside of its original intent. Erlang seems to have an artificially high learning curve. Most sources I found assumed a solid foundation of knowledge in the language and just provided blocks of code with limited explanation of why things were being done that way they were. It reminds me of the web developement community that assumes you know what they are talking about (\emph{i.e.} using React, Redux, jQuery, etc.) without explaining what modules or components are or even provide sources to aid those who do not already know.
+
+The tutorials that I found most useful were on Tutorialspoint\cite{tutorialspoint} and O'Reilly\cite{kessin}. Even though these tutorials were the most useful, they were still some of the drier tutorials I have followed. I will cover more on these tutorials in Subsection \ref{tutorials}.
+
+\section{Erlang Use Cases}\label{usecase}
+Joe Armstrong, one of Erlang's original authors, analogized the language to Java's ``write once, run anywhere,'' to ``write once, run forever''\cite{run-forever}. Erlang is a functional programming language that is known for it use in the telecommunications industry and the popular software like \emph{RabbitMQ}\cite{ribbitmq-wiki} and \emph{Chef}\cite{chef-wiki}. 
 
 Erlang has several characteristics that make it very attractive to those who need their programs to stay alive, like the telecommunications industry. It supports \emph{distribution}, \emph{hot swapping}, and \emph{soft real-time computing}.
 
-\section{Research}
-The primary way I learn new languages is to find a variety of tutorials and many quick searches to figure out what I need to do when tasks come up. In addition to on-demand searches, use cases are of great importance to the research and decision whether-or-not to use a language for a given task. 
-
-
+\section{Project}\label{project}
+\subsection{Tutorials}\label{tutorials}
+\subsection{My Take}\label{mytake}
  
 \section{Conclusion}
 \subsection{Using Erlang}
@@ -203,7 +214,7 @@ For the course project, I hope to write a program that shows off Erlang's abilit
 
 \newpage
 \section{Appendix}
-\subsection{Definitions}
+\subsection{Definitions}\label{definitions}
 \begin{enumerate}
 \item  Hot Swapping - code can be updated without shutting down a system \cite{wiki}.
 \item Soft Real-time Computing - computation where the goal is to meet subsets of deadlines in order to optimize application-specific criteria (defined by developer). \cite{soft-rt}.
@@ -211,62 +222,19 @@ For the course project, I hope to write a program that shows off Erlang's abilit
  
 \subsection{Code snippets}
 
-\begin{lstlisting}
--module(hello_world).
--export([start/0]).
+    hello\_world.erl
+    \lstinputlisting{../../examples/hello_world/hello_world.erl}
+    
+    fibonacci.erl
+    \lstinputlisting{../../examples/fibonacci/fibonacci.erl}
+    
+    basic\_math.erl
+    \lstinputlisting{../../examples/basic_math/basic_math.erl}
 
-start() ->
-    io:fwrite("hello world~n").
-\end{lstlisting}
-
-\begin{lstlisting}
--module(basic_math).
--import(lists,[append/2]). 
--export([start/0, start/1]).
-
-start() ->
-    W = 0,
-    X = 1,
-    Y = 2,
-    Z = 3,
-    N = [multiplication(W, X)],
-    N1 = append(N, [divison(Z+Z+Y, Y)]),
-    N2 = append(N1, [addition(X, Y)]),
-    N3 = append(N2, [subtraction(X, Y)]),
-    N4 = append(N3, [pow(Y, Z)]),
-    N5 = append(N4, [log(Y, Z)]),
-    io:fwrite("~w~n", [N5]).
-
-start(X) ->
-    N = [multiplication(X, X)],
-    N1 = append(N, [divison(X+X+X, X)]),
-    N2 = append(N1, [addition(X, X)]),
-    N3 = append(N2, [subtraction(X, X)]),
-    N4 = append(N3, [pow(X, X)]),
-    N5 = append(N4, [log(X, X)]),
-    io:fwrite("~w~n", [N5]).
-
-
-multiplication(A, B) -> 
-    A * B.
-
-divison(A, B) -> 
-    A / B.
-
-addition(A, B) -> 
-    A + B.
-
-subtraction(A, B) -> 
-    A + B.
-
-pow(A, Exp) ->
-    math:pow(A, Exp).
-
-log(A, Base) ->
-    math:log(A)/math:log(Base).
-\end{lstlisting}
-
- \subsection{Source locations}
+    
+    poly\_app.erl
+    \lstinputlisting{../../examples/web_server/poly_app.erl}
+\subsection{Source locations}
 
   
 \begin{thebibliography}{99}
@@ -309,11 +277,21 @@ YouTube. (2019). Rackspace takes a look at the ERLANG programming language for d
 \bibitem{gsmith}
 G. Smith, YouTube - Building a web app in Erlang - yes you heard me right I said Erlang not Elixir, 25-Mar-2017. [Online]. Available: \url{https://www.youtube.com/watch?v=BO-8Hx8kPtA}. [Accessed: 03-May-2019].
 
-\bibitem{erlang-webpage}
+\bibitem{tutorialspoint}
 Tutorialspoint.com, ``Erlang Web Programming,'' www.tutorialspoint.com. [Online]. Available: \url{https://www.tutorialspoint.com/erlang/erlang_web_programming.htm}. [Accessed: 03-May-2019].
 
 \bibitem{kessin}
 Kessin, Z. (2019). Building Web Applications with Erlang. [online] O'Reilly | Safari. Available at: \url{https://www.oreilly.com/library/view/building-web-applications/9781449320621/ch04.html#rest} [Accessed 5 May 2019].
+
+\bibitem{yaws}
+GitHub. (2019). klacke/yaws. [online] Available at: https://github.com/klacke/yaws [Accessed 6 May 2019].
+
+\bibitem{inets}
+Erldocs.com. (2019). inets (inets) - (Erlang Documentation). [online] Available at: \url{https://erldocs.com/r15b01/inets/inets.html} [Accessed 6 May 2019].
+
+\bibitem{modesi}
+Erlang.org. (2019). Erlang -- mod\_esi. [online] Available at: \url{http://erlang.org/doc/man/mod_esi.html} [Accessed 6 May 2019].
+
 
 \end{thebibliography}
 \end{document}
