@@ -35,7 +35,7 @@
   belowskip=1mm,
   showstringspaces=false,
   columns=flexible,
-  basicstyle={\small\ttfamily},
+  basicstyle={\scriptsize\ttfamily},
   numbers=none,
   numberstyle=\tiny\color{gray},
   keywordstyle=\color{blue},
@@ -203,15 +203,39 @@ Earlier I mentioned that that two tutorials that I found most useful were on Tut
 The Tutorialspoint web app tutorial was a fairly straightforward example of how to create a web server and delivier some code over a port. The tutorial can run as provided, but it helps to have a better understanding of \emph{httpd}
 
 \subsubsection{Using Erlang}
-Erlang can be a powerful language, but it seems that there will be quite a learning curve on how to use the language. I have installed the Erlang, written a couple small programs (see Appendix \ref{code-snippets}), but to perform more complex tasks you would need to use \emph{rebar3}. Rebar3 is an application and dependency management program for erlang. This would be analogous with other dependency management tools for other languages like \emph{Maven} (Java) and \emph{pip} (Python).
+Erlang can be a powerful language, but it seems that there will be quite a learning curve on how to use the language. I installed the Erlang, written a couple small programs (see Appendix \ref{code-snippets}), but to perform more complex tasks you would need to use \emph{rebar3}. Rebar3 is an application and dependency management program for erlang. This would be analogous with other dependency management tools for other languages like \emph{Maven} (Java) and \emph{pip} (Python).
 
+\subsection{My Erlang Programs}\label{programs}
+\subsubsection{The Basics}
+The first three programs that I wrote in erlang were:
+\begin{enumerate}
+    \item hello\_world.erl (\ref{hw})
+    \item basic\_math.erl (\ref{bm})
+    \item and fibonacci.erl (\ref{fib})
+\end{enumerate}
+These three programs were exercises in showing off the basic syntax of erlang and how it can perform actions similar to OCaml or Haskel. 
 
-\subsection{My Erlang Programs}\label{mytake}
- 
+$(1)$ The hello\_world.erl program is the basic program everyone writes up when learning pretty much anything new in programming. It shows how a module is declared, how to export a function for later use, and how to print out a basic string. $(2)$ The basic\_math.erl program continues on from where hello\_world.erl left off by showing how to import a function from a module, export function with parameters, some basic math operations, append to a list, and print a list using \textsf{io:fwrite}. $(3)$ And finally, fibonacci.erl shows how erlang performs pattern matching, conditionals, and recursion.
+
+\subsubsection{Diving Deeper}
+After experimenting with the basics of erlang, I wanted to see what else I could do with a langauge that started out as a proprietary language for telecommunications in a local environment. My first thought was to create some kind of chat application that could sent messages between two docker containers or two computers on a local network, but after some research all I was able to complete was sending messages between two users logged into localhost on the same computer. This was performed by using the erlang module called \emph{erlbus}\cite{erlbus}. Erlbus taught me how to use rebar3, but the results of my experiments did not result in much beyond what was described in the README.
+
+During my research I found the Tutorialspoint and O'Reilly tutorials that show how to create a webserver that could host web apps. The example I provide in the Appendix \ref{pa} serves up my github portfolio page (\url{https://apjansing.github.io}) at \url{http://http://localhost:8081/erl/poly_app:service} after running the following commands:
+\begin{lstlisting}
+git clone git@github.com:apjansing/erlang-project.git
+cd erlang-project/examples/web_server
+erlc poly_app.erl
+erl
+> c(poly_app).
+> inets:start().
+> poly_app:start().
+\end{lstlisting}
+This web server is interesting, because it has lead to the reverse proxying program YAWS\cite{yaws} \`a-la Apache HTTP Server Project \cite{apache-httpd}.
+
 \section{Conclusion}
+Erlang is a powerful language that has never won any popularity contents or is very fast. It is known to be resilient and tolerant of hot-swapping code\cite{wiki}. Erlang has a steep learning curve. The erlang community has many people who love their language and want to help each other. But the questions pertaining to basic questions are limited. If you have the time, reading Fred H\`erbert's book might be the best way to learn erlang\cite{herbert}. I used his book while learning some of the basic syntax, but he is very thourough and better for someone who is focusing all of their attention on absorbing what he has to say.
 
-
-\newpage
+% \newpage
 \section{Appendix}
 \subsection{Definitions}\label{definitions}
 \begin{enumerate}
@@ -221,17 +245,16 @@ Erlang can be a powerful language, but it seems that there will be quite a learn
  
 \subsection{Code snippets}\label{code-snippets}
 
-    hello\_world.erl
+    \subsubsection{hello\_world.erl} \label{hw}\hfill
     \lstinputlisting{../../examples/hello_world/hello_world.erl}
     
-    fibonacci.erl
-    \lstinputlisting{../../examples/fibonacci/fibonacci.erl}
-    
-    basic\_math.erl
+    \subsubsection{basic\_math.erl} \label{bm}\hfill
     \lstinputlisting{../../examples/basic_math/basic_math.erl}
 
+    \subsubsection{fibonacci.erl} \label{fib}\hfill
+    \lstinputlisting{../../examples/fibonacci/fibonacci.erl}
     
-    poly\_app.erl
+    \subsubsection{poly\_app.erl} \label{pa}\hfill
     \lstinputlisting{../../examples/web_server/poly_app.erl}
 \subsection{Source locations}
 
@@ -273,6 +296,9 @@ YouTube. (2019). Rackspace takes a look at the ERLANG programming language for d
 \bibitem{inside-erlang}
 “Inside Erlang – creator Joe Armstrong tells his story,” Ericsson.com, 04-Dec-2014. [Online]. Available: \url{https://www.ericsson.com/en/news/2014/12/inside-erlang--creator-joe-armstrong-tells-his-story}. [Accessed: 21-Mar-2019].
 
+\bibitem{erlbus}
+McCord, C. and Bolaños, C. (2019). cabol/erlbus. [online] GitHub. Available at: https://github.com/cabol/erlbus [Accessed 27 Apr. 2019].
+
 \bibitem{gsmith}
 G. Smith, YouTube - Building a web app in Erlang - yes you heard me right I said Erlang not Elixir, 25-Mar-2017. [Online]. Available: \url{https://www.youtube.com/watch?v=BO-8Hx8kPtA}. [Accessed: 03-May-2019].
 
@@ -292,7 +318,13 @@ Erldocs.com. (2019). inets (inets) - (Erlang Documentation). [online] Available 
 Erlang.org. (2019). Erlang -- mod\_esi. [online] Available at: \url{http://erlang.org/doc/man/mod_esi.html} [Accessed 6 May 2019].
 
 \bibitem{sencha}
-Sencha.com. (2019). [online] Available at: http://sencha.com/ [Accessed 6 May 2019].
+Sencha.com. (2019). [online] Available at: \url{http://sencha.com/} [Accessed 6 May 2019].
+
+\bibitem{apache-httpd}
+Httpd.apache.org. (2019). Welcome! - The Apache HTTP Server Project. [online] Available at: https://httpd.apache.org/ [Accessed 7 May 2019].
+
+\bibitem{herbert}
+Hérbert, F. (2019). Learn You Some Erlang for Great Good!. [online] Learnyousomeerlang.com. Available at: https://learnyousomeerlang.com/ [Accessed 7 May 2019].
 
 \end{thebibliography}
 \end{document}
